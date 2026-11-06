@@ -15,6 +15,9 @@ jobs:
           gradle-version: 9.4.0
       - name: Descomprimir el mod
         run: unzip -q mundo-prehistorico-fabric.zip -d project
+      - name: Poner version de Fabric API
+        working-directory: project/prehistoric
+        run: sed -i 's/^fabric_api_version=.*/fabric_api_version=0.152.1+26.1.2/' gradle.properties
       - name: Compilar
         working-directory: project/prehistoric
         run: gradle build --no-daemon
